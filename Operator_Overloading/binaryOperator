@@ -1,0 +1,64 @@
+// C++ program to overload the binary operator +
+// This program adds two complex numbers
+/*
+Binary operators work on two operands. For example,
+
+result = num + 9;
+Here, + is a binary operator that works on the operands num and 9.
+
+When we overload the binary operator for user-defined types by using the code:
+
+obj3 = obj1 + obj2;
+The operator function is called using the obj1 object and obj2 is passed as an argument to the function.
+*/
+#include <iostream>
+using namespace std;
+
+class Complex {
+   private:
+    float real;
+    float imag;
+
+   public:
+    // Constructor to initialize real and imag to 0
+    Complex(){
+        real=0;
+         imag=0;
+         }
+
+    void input() {
+        cout << "Enter real and imaginary parts respectively: ";
+        cin >> real;
+        cin >> imag;
+    }
+
+    // Overload the + operator
+    Complex operator + (const Complex& obj) {
+        Complex temp;
+        temp.real = real + obj.real;
+        temp.imag = imag + obj.imag;
+        return temp;
+    }
+
+    void output() {
+
+            cout << "Output Complex number: " << real << "+" << imag << "i";
+    }
+};
+
+int main() {
+    Complex complex1, complex2, result;
+
+    cout << "Enter first complex number:\n";
+    complex1.input();
+
+    cout << "Enter second complex number:\n";
+    complex2.input();
+
+   // complex1 calls the operator function
+   // complex2 is passed as an argument to the function
+    result = complex1 + complex2;
+    result.output();
+
+    return 0;
+}
