@@ -1,0 +1,82 @@
+#include <iostream>
+using namespace std;
+/*
+      Inheritance in C++ an Overview
+
+Reusability is a very important feature of OOPs
+In C++ we can reuse a class and add additional features to it
+Reusing classes saves time and money
+Reusing already tested and debugged classes will save a lot of effort of developing and debugging the same thing again
+
+What is Inheritance in C++?
+
+The concept of reusability in C++ is supported using inheritance
+We can reuse the properties of an existing class by inheriting it
+The existing class is called a base class
+The new class which is inherited from the base class is called a derived class
+Reusing classes saves time and money
+There are different types of inheritance in C++
+
+Forms of Inheritance in C++
+
+Single Inheritance
+Multiple Inheritance
+Hierarchical Inheritance
+Multilevel Inheritance
+Hybrid Inheritance
+*/
+class Base
+{
+    int data1; // private by default and is not inheritable
+public:
+    int data2;
+    void setData();
+    int getData1();
+    int getData2();
+};
+
+void Base ::setData(void)
+{
+    data1 = 10;
+    data2 = 20;
+}
+
+int Base::getData1()
+{
+    return data1;
+}
+
+int Base::getData2()
+{
+    return data2;
+}
+class Derived : public Base
+{ // Class is being derived publically
+    int data3;
+
+public:
+    void process();
+    void display();
+};
+
+void Derived ::process()
+{
+    //as data1 privately declared so we cannot inherited directly
+    data3 = data2 * getData1();
+}
+
+void Derived ::display()
+{
+    cout << "Value of data 1 is " << getData1() << endl;
+    cout << "Value of data 2 is " << data2 << endl;
+    cout << "Value of data 3 is " << data3 << endl;
+}
+int main()
+{
+    Derived der;
+    der.setData();
+    der.process();
+    der.display();
+
+    return 0;
+}
