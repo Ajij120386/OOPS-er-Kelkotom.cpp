@@ -1,0 +1,39 @@
+#include <iostream>
+using namespace std;
+/*
+A pure virtual function is a virtual function
+in C++ for which we need not to write any function definition and only we have to declare it
+A pure virtual function (or abstract function) in C++ is a virtual function for
+ which we don’t have implementation, we only declare it. A pure virtual function start
+ with virtual keyword and ends with = 0.
+
+Syntax of Pure virtual function :
+
+virtual f() = 0;
+A class that contains a pure virtual function is known as an abstract class.
+e cannot create objects of an abstract class. However, we can derive classes from them,
+ and use their data members and member functions (except pure virtual functions).
+
+ An abstract class is one that is not used to create objects
+*/
+// Abstract class
+class Base {
+   public:
+
+    // pure virtual Function
+    virtual void show() = 0;
+};
+
+// Derived class
+class Derived : public Base {
+   public:
+    void show() {
+        cout << "Implementation of Abstract class and Pure virtual function.";
+    }
+};
+
+int main() {
+    Derived obj;
+    obj.show();
+    return 0;
+}
