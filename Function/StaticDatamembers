@@ -1,0 +1,73 @@
+#include <iostream>
+using namespace std;
+/*
+We can define class members static using static keyword. When we declare a member of a class as static
+it means no matter how many objects of the class are created, there is only one copy of the static member.
+Static data members are class members that are declared using the static keyword.
+There is only one copy of the static data member in the class, even if there are many class objects.
+ This is because all the objects share the static data member. The static data member is
+ always initialized to zero when the first class object is created.
+
+The syntax of the static data members is given as follows −
+
+static data_type data_member_name;
+
+When a static data member is created, there is only a single copy of the data member which is shared
+ between all the objects of the class
+ When a static method is created, they become independent of any object and class. Static methods can only
+ access static data members and static methods.
+ Static methods can only be accessed using the scope resolution operator.
+ */
+class Employee
+{
+    int id;
+    //static data member
+    static int count;
+
+public:
+    void setData(void)
+    {
+        cout << "Enter the id" << endl;
+        cin >> id;
+        count++;
+    }
+    void getData(void)
+    {
+        cout << "The id of this employee is " << id << " and this is employee number " << count << endl;
+    }
+
+   //static member function
+   static void getCount(void){
+        // cout<<id; // throws an error
+        cout<<"The value of count is "<<count<<endl;
+    }
+
+};
+
+// Count is the static data member of class Employee
+int Employee::count; // Default value is 0
+
+int main()
+{
+    Employee harry, rohan, lovish;
+    // harry.id = 1;
+    // harry.count=1; // cannot do this as id and count are private
+
+    harry.setData();
+    harry.getData();
+    //accessing static member function
+   Employee::getCount();
+
+    rohan.setData();
+    rohan.getData();
+    //  //accessing static member function
+    Employee::getCount();
+
+    lovish.setData();
+    lovish.getData();
+      //accessing static member function
+  Employee::getCount();
+
+    return 0;
+}
+
