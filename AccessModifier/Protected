@@ -1,0 +1,43 @@
+// C++ implementation to show
+// Protected Visibility mode
+
+#include <bits/stdc++.h>
+using namespace std;
+
+// Base class
+// Class A will be inherited
+class A {
+public:
+    int x;
+
+protected:
+    int y;
+
+private:
+    int z;
+};
+
+// Derived class
+// Class B will inherit Class A
+// using Protected Visibility mode
+class B : protected A {
+};
+
+// main function
+int main()
+{
+    B b;
+
+    // x is public and it will become protected
+    // so it will give visibility error
+    cout << b.x << endl;
+
+    // y is protected and it will remain protected
+    // so it will give visibility error
+    cout << b.y << endl;
+
+    // z is not accessible from B as
+    // z is private and it will remain private
+    // so it will give visibility error
+    cout << b.z << endl;
+};
